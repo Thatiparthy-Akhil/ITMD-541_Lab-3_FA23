@@ -1,0 +1,44 @@
+body {
+    font-family: Arial Black, sans-serif;
+    text-align: center;
+    background-color: rgb(87, 81, 182);
+}
+
+form {
+    padding: 50px;
+    border: 1px solid black;
+    background-color:lightgray;
+    border-radius: 5px;
+    width: 500px;
+    margin: auto;
+    
+}
+
+#bill,
+#tip,
+#tip-percentage,
+#tip-amount,
+#total-bill{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; 
+    margin: 20px;
+
+}
+label{
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+}
+input{
+    width: 200px;
+}
+
+input[disabled]{
+ background-color:azure;
+}
+
+
+
+
