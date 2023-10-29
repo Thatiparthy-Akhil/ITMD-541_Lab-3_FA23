@@ -9,17 +9,27 @@ const elements = {
     form: document.getElementById('Calculator-Form'),
 };
 
-// creating a function for calculating the tip.
+// Creating a function for calculating the tip.
 function calculatingTip() {
     const BillTotal = parseFloat(elements.BillTotalInput.value);
     const Tip = parseInt(elements.TipInput.value);
     const TipPercentage = parseFloat(elements.TipInput.value);
-    //calculating the tip amount and total bill.
+
+    // Calculating the tip amount and total bill.
     const TipAmount = (BillTotal * TipPercentage) / 100;
     const TotalBill = BillTotal + TipAmount;
 
+    if (isNaN(BillTotal)) {
+        elements.TipInput.value = 0;
+        elements.TipPercentageInput.value = 0;
+        elements.TipAmountInput.value = 0;
+        elements.TotalBillInput.value = 0;
+        return;
+    }
+       
+
     if (!isNaN(TotalBill)) {
-        //The values that takes only up to 2 decimals.
+        // The values that take only up to 2 decimals.
         elements.TipPercentageInput.value = TipPercentage.toFixed(2);
         elements.TipInput.value = Tip.toFixed(2);
         elements.TipAmountInput.value = TipAmount.toFixed(2);
@@ -27,18 +37,25 @@ function calculatingTip() {
     }
 }
 
+
+
 // Adding an event listener to the form for input changes
 elements.form.addEventListener('input', calculatingTip);
+
+// Adding an event listener to the BillTotalInput to check if it's empty or contains non-digit characters
 elements.BillTotalInput.addEventListener('input', function () {
-    //printing alert message for other than number texts.
-    if (isNaN((elements.BillTotalInput.value)) || elements.BillTotalInput.value === " ")  {
+    const billTotalValue = elements.BillTotalInput.value;
+    if(/[^\d]/.test(billTotalValue)) {
         alert('Please enter a valid number for Bill Total.');
-        elements.BillTotalInput.value = " ";
     }
+    
 });
+
 calculatingTip();
 
 
 
-  
+
+
+
 
